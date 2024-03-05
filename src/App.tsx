@@ -11,7 +11,7 @@ function App() {
   });
 
   return (
-    <div className="flex divide-y">
+    <div className="flex divide-x">
       {columns.map((column) => (
         <div>
           <h1>{column.title}</h1>
