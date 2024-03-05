@@ -1,10 +1,6 @@
-interface CardProps {
-  title: string;
-  id: string;
-  points: number;
-}
+import { Task } from '../../Types';
 
-export function Card({ title, id, points }: CardProps) {
+export function TaskCard({ title, id, points }: Task) {
   return (
     <div className="border rounded-lg px-2 m-2 bg-green-50">
       <div className="text-base font-semibold py-2">{title}</div>

@@ -1,16 +1,19 @@
-import { Card } from './task-card';
+import { TaskCard } from './Components';
+import { Task } from './Types';
 
 function App() {
-  const title = 'Do Market Research';
-  const id = 'BUS-1';
-  const points = 5;
+  const task: Task = {
+    title: 'Do Market Research',
+    id: 'BUS-1',
+    points: 5,
+  };
 
   return (
     <>
-      <Card title={title} id={id} points={points} />
-      <Card title="Competidor Analisys" id="BUS-2" points={3} />
-      <Card title="Develop Business Strategy" id="BUS-3" points={8} />
-      <Card title="Develop Marketing Strategy" id="BUS-4" points={5} />
+      <TaskCard {...task} />
+      <TaskCard title="Competidor Analisys" id="BUS-2" />
+      <TaskCard title="Develop Business Strategy" id="BUS-3" points={8} />
+      <TaskCard title="Develop Marketing Strategy" id="BUS-4" points={5} />
     </>
   );
 }
