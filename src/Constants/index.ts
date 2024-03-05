@@ -24,21 +24,21 @@ export const tasks: Task[] = [
   },
   {
     title: 'Develop Business Strategy',
-    id: 'BUS-3',
+    id: 'BUS-4',
     points: 8,
     status: 'done',
     priority: 'medium',
   },
   {
     title: 'Develop Business Strategy',
-    id: 'BUS-3',
+    id: 'BUS-5',
     points: 8,
     status: 'in-progress',
     priority: 'medium',
   },
   {
     title: 'Develop Business Strategy',
-    id: 'BUS-3',
+    id: 'BUS-6',
     points: 8,
     status: 'todo',
     priority: 'medium',
@@ -46,7 +46,7 @@ export const tasks: Task[] = [
 
   {
     title: 'Develop Business Strategy',
-    id: 'BUS-3',
+    id: 'BUS-7',
     points: 8,
     status: 'done',
     priority: 'medium',

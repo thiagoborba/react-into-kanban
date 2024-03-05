@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Task } from '../../Types';
 
 const lowPriorityIcon = (
@@ -57,13 +56,13 @@ const highPriorityIcon = (
 );
 
 export function TaskCard({
-  title,
-  id,
-  priority,
-  points: pointsProp = 0,
-}: Task) {
-  const [points, setPoints] = useState(pointsProp);
-
+  task,
+  updateTaskPoints,
+}: {
+  task: Task;
+  updateTaskPoints: (task: Task, points: number) => void;
+}) {
+  const { id, priority, title, points = 0 } = task;
   return (
     <div className="border rounded-lg px-2 m-2 bg-green-50">
       <div className="text-base font-semibold py-2">{title}</div>
@@ -77,9 +76,9 @@ export function TaskCard({
           {priority === 'low' && lowPriorityIcon}
         </div>
         <div className="flex gap-2 items-center">
-          <button onClick={() => setPoints((points) => points + 1)}>-</button>
-          {points}
-          <button onClick={() => setPoints((points) => points + 1)}>+</button>
+          <button onClick={() => updateTaskPoints(task, points - 1)}>-</button>
+          <div className="font-bold">{points}</div>
+          <button onClick={() => updateTaskPoints(task, points + 1)}>+</button>
         </div>
       </div>
     </div>
