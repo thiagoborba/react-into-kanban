@@ -22,6 +22,13 @@ function App() {
     setTasks(updatedTasks);
   }
 
+  function updateTaskTitle(task: Task, title: string) {
+    const updatedTasks = tasks.map((t) => {
+      return t.id === task.id ? { ...t, title } : t;
+    });
+    setTasks(updatedTasks);
+  }
+
   return (
     <div className="flex divide-x">
       {columns.map((column) => (
@@ -34,7 +41,11 @@ function App() {
           </div>
 
           {column.tasks.map((task) => (
-            <TaskCard task={task} updateTaskPoints={updateTaskPoints} />
+            <TaskCard
+              updateTaskTitle={updateTaskTitle}
+              task={task}
+              updateTaskPoints={updateTaskPoints}
+            />
           ))}
         </div>
       ))}

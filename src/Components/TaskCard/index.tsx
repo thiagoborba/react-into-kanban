@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Task } from '../../Types';
 
 const lowPriorityIcon = (
@@ -58,10 +59,14 @@ const highPriorityIcon = (
 export function TaskCard({
   task,
   updateTaskPoints,
+  updateTaskTitle,
 }: {
   task: Task;
   updateTaskPoints: (task: Task, points: number) => void;
+  updateTaskTitle: (task: Task, title: string) => void;
 }) {
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+
   const { id, priority, title, points = 0 } = task;
 
   function updatePoints(direction: 'up' | 'down') {
@@ -80,7 +85,19 @@ export function TaskCard({
 
   return (
     <div className="border rounded-lg px-2 m-2 bg-green-50">
-      <div className="text-base font-semibold py-2">{title}</div>
+      <div className="text-base font-semibold py-2">
+        {isEditingTitle ? (
+          <input
+            autoFocus
+            className="w-full"
+            onBlur={() => setIsEditingTitle(false)}
+            value={title}
+            onChange={(e) => updateTaskTitle(task, e.target.value)}
+          />
+        ) : (
+          <div onClick={() => setIsEditingTitle(true)}>{title}</div>
+        )}
+      </div>
       <div className="flex justify-between py-2 text-gray-700">
         <div className="flex gap-2">
           <div>{id}</div>
