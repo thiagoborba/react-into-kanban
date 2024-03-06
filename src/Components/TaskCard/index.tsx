@@ -58,12 +58,10 @@ const highPriorityIcon = (
 
 export function TaskCard({
   task,
-  updateTaskPoints,
-  updateTaskTitle,
+  updateTask,
 }: {
   task: Task;
-  updateTaskPoints: (task: Task, points: number) => void;
-  updateTaskTitle: (task: Task, title: string) => void;
+  updateTask: (task: Task) => void;
 }) {
   const [isEditingTitle, setIsEditingTitle] = useState(false);
 
@@ -79,12 +77,18 @@ export function TaskCard({
     const newPoints = fib[newIndex];
 
     if (newPoints) {
-      updateTaskPoints(task, newPoints);
+      updateTask({ ...task, points: newPoints });
     }
   }
 
   return (
-    <div className="border rounded-lg px-2 m-2 bg-green-50">
+    <div
+      draggable
+      onDragStart={(e) => {
+        e.dataTransfer.setData('id', task.id);
+      }}
+      className="border rounded-lg px-2 m-2 bg-green-50"
+    >
       <div className="text-base font-semibold py-2">
         {isEditingTitle ? (
           <input
@@ -92,7 +96,7 @@ export function TaskCard({
             className="w-full"
             onBlur={() => setIsEditingTitle(false)}
             value={title}
-            onChange={(e) => updateTaskTitle(task, e.target.value)}
+            onChange={(e) => updateTask({ ...task, title: e.target.value })}
           />
         ) : (
           <div onClick={() => setIsEditingTitle(true)}>{title}</div>
