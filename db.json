@@ -1,0 +1,53 @@
+{
+  "tasks": [
+    {
+      "title": "Do Market Research",
+      "id": "BUS-1",
+      "status": "todo",
+      "priority": "high",
+      "points": 13
+    },
+    {
+      "title": "Competidor Analisys",
+      "id": "BUS-2",
+      "status": "in-progress",
+      "priority": "low",
+      "points": 13
+    },
+    {
+      "title": "Develop Business Strategy",
+      "id": "BUS-3",
+      "points": 13,
+      "status": "done",
+      "priority": "medium"
+    },
+    {
+      "title": "Develop Business Strategy",
+      "id": "BUS-4",
+      "points": 13,
+      "status": "done",
+      "priority": "medium"
+    },
+    {
+      "title": "Develop Business Strategy",
+      "id": "BUS-5",
+      "points": 13,
+      "status": "in-progress",
+      "priority": "medium"
+    },
+    {
+      "title": "Develop Business Strategy",
+      "id": "BUS-6",
+      "points": 13,
+      "status": "todo",
+      "priority": "medium"
+    },
+    {
+      "title": "Develop Business Strategy",
+      "id": "BUS-7",
+      "points": 13,
+      "status": "done",
+      "priority": "medium"
+    }
+  ]
+}

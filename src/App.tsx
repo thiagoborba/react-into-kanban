@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TaskCard } from './Components';
-import { tasks as initialTasks, statuses } from './Constants';
+import { statuses } from './Constants';
 import { Status, Task } from './Types';
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [currentlyHoveringOver, setCurrentlyHoveringOver] =
     useState<Status | null>(null);
 
-  console.log(currentlyHoveringOver);
+  useEffect(() => {
+    fetch('http://localhost:8000/tasks')
+      .then((res) => res.json())
+      .then((data) => setTasks(data));
+  }, []);
 
   const columns = statuses.map((status) => {
     const tasksInColumn = tasks.filter((task) => task.status === status);
@@ -19,6 +23,14 @@ function App() {
   });
 
   function updateTask(task: Task) {
+    fetch(`http://localhost:8000/tasks/${task.id}`, {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    });
+
     const updatedTasks = tasks.map((t) => {
       return t.id === task.id ? task : t;
     });
